@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Impostor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Guess the Impostor</h1>
+        </header>
+
+        <!-- Join/Create Game Screen -->
+        <div id="join-screen" class="screen active">
+            <div class="join-form">
+                <div class="form-group">
+                    <label for="player-name">Your Name:</label>
+                    <input type="text" id="player-name" placeholder="Enter your name" maxlength="20">
+                </div>
+                
+                <div class="join-options">
+                    <div class="option-card">
+                        <h2>Create New Game</h2>
+                        <p>Start a new game and invite friends</p>
+                        <button id="create-game-btn" class="primary-btn">Create Game</button>
+                    </div>
+                    
+                    <div class="option-card">
+                        <h2>Join Existing Game</h2>
+                        <div class="form-group">
+                            <input type="text" id="game-code" placeholder="Enter game code" maxlength="6">
+                        </div>
+                        <button id="join-game-btn" class="primary-btn">Join Game</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lobby Screen -->
+        <div id="lobby-screen" class="screen">
+            <div class="lobby-header">
+                <h2>Game Lobby</h2>
+                <div class="game-code-display">
+                    <span>Game Code:</span>
+                    <span id="display-game-code" class="code"></span>
+                    <button id="copy-code-btn" class="icon-btn" title="Copy to clipboard">📋</button>
+                </div>
+            </div>
+            
+            <div class="players-list-container">
+                <h3>Players</h3>
+                <ul id="players-list" class="players-list"></ul>
+            </div>
+            
+            <div class="lobby-actions">
+                <button id="start-game-btn" class="primary-btn">Start Game</button>
+                <button id="leave-game-btn" class="secondary-btn">Leave Game</button>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="screen">
+            <div class="game-header">
+                <div class="game-info">
+                    <div id="round-info">Round <span id="current-round">1</span>/3</div>
+                    <div id="timer-container">
+                        <span id="timer-label">Time Left:</span>
+                        <span id="timer">30s</span>
+                    </div>
+                </div>
+                <div id="word-display">
+                    <span id="word-label">Your Word:</span>
+                    <span id="secret-word" class="secret-word"></span>
+                    <span id="role-indicator"></span>
+                </div>
+            </div>
+
+            <div class="game-content">
+                <div class="clues-container">
+                    <h3>Clues</h3>
+                    <div id="clues-log" class="clues-log"></div>
+                </div>
+
+                <div id="turn-indicator" class="turn-indicator"></div>
+
+                <div id="clue-input-container" class="clue-input-container">
+                    <input type="text" id="clue-input" placeholder="Enter your one-word clue" maxlength="20">
+                    <button id="submit-clue-btn" class="primary-btn">Submit</button>
+                </div>
+
+                <div id="voting-container" class="voting-container">
+                    <h3>Who is the Impostor?</h3>
+                    <div id="voting-options" class="voting-options"></div>
+                    <button id="submit-vote-btn" class="primary-btn">Submit Vote</button>
+                </div>
+
+                <div id="results-container" class="results-container">
+                    <h2 id="result-title"></h2>
+                    <div id="result-details"></div>
+                    <div id="secret-word-reveal"></div>
+                    <div class="result-actions">
+                        <button id="next-round-btn" class="primary-btn">Next Round</button>
+                        <button id="back-to-lobby-btn" class="secondary-btn">Back to Lobby</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Connection Lost Screen -->
+        <div id="connection-lost" class="screen">
+            <div class="error-container">
+                <h2>Connection Lost</h2>
+                <p>Trying to reconnect...</p>
+                <button id="reconnect-btn" class="primary-btn">Reconnect</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
